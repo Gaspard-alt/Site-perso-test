@@ -9,30 +9,38 @@
     <link rel="stylesheet" href="./style.css">
     <link rel="icon" href="./favicon.ico" type="image/x-icon">
   </head>
-  <body>
-    <main>
-        <h1><strong>Welcome to My Website</strong></h1>
-        <em><h2>Calculatrice</h2></em>
-        <p><h1><input id="display"></p>
-        <div class="btn btn-warning rounded-pill px-3" id="butC" onclick="effacer()">C</div>
-        <div class="btn btn-info rounded-pill px-3" id="but0" onclick="appendToDisplay('0')">0</div>
-        <div class="btn btn-info rounded-pill px-3" id="but1" onclick="appendToDisplay('1')">1</div>
-        <div class="btn btn-danger rounded-pill px-3" id="but+" onclick="appendToDisplay('+')">+</div></p>
-        <p><div class="btn btn-info rounded-pill px-3" id="but2" onclick="appendToDisplay('2')">2</div>
-        <div class="btn btn-info rounded-pill px-3" id="but3" onclick="appendToDisplay('3')">3</div>
-        <div class="btn btn-info rounded-pill px-3" id="but4" onclick="appendToDisplay('4')">4</div>
-        <div class="btn btn-danger rounded-pill px-3" id="but-" onclick="appendToDisplay('-')">-</div></p>
-        <div class="btn btn-info rounded-pill px-3" id="but5" onclick="appendToDisplay('5')">5</div>
-        <div class="btn btn-info rounded-pill px-3" id="but6" onclick="appendToDisplay('6')">6</div>
-        <div class="btn btn-info rounded-pill px-3" id="but7" onclick="appendToDisplay('7')">7</div>
-        <div class="btn btn-danger rounded-pill px-3" id="but*" onclick="appendToDisplay('*')">*</div></p>
-        <div class="btn btn-info rounded-pill px-3" id="but8" onclick="appendToDisplay('8')">8</div>
-        <div class="btn btn-info rounded-pill px-3" id="but9" onclick="appendToDisplay('9')">9</div>
-        <div class="btn btn-secondary rounded-pill px-3" id="but" onclick="appendToDisplay('(')">(</div>
-        <div class="btn btn-danger rounded-pill px-3" id="but/" onclick="appendToDisplay('/')">/</div></p>
-        <button class="btn btn-success rounded-pill px-3" onclick="calculer()"><strong><h5>Calculer</h5></strong></button>
-        <button class="btn btn-success rounded-pill px-3" onclick="carre()"><strong><h5>²</h5></strong></button>
-        <div class="btn btn-secondary rounded-pill px-3" id="but)" onclick="appendToDisplay(')')">)</div>
+  <body class="d-flex align-items-center justify-content-center min-vh-100">
+    <main class="w-100 p-3" style="max-width: 500px;">
+        <h1 class="text-center mb-3"><strong>Welcome to My Website</strong></h1>
+        <em><h2 class="text-center mb-4">Calculatrice</h2></em>
+        <div class="mb-3">
+          <input id="display" class="form-control form-control-lg text-end" placeholder="0">
+        </div>
+        <div class="row g-2">
+          <div class="col-3"><div class="btn btn-warning rounded-pill w-100" onclick="effacer()">C</div></div>
+          <div class="col-3"><div class="btn btn-info rounded-pill w-100" onclick="appendToDisplay('0')">0</div></div>
+          <div class="col-3"><div class="btn btn-info rounded-pill w-100" onclick="appendToDisplay('1')">1</div></div>
+          <div class="col-3"><div class="btn btn-danger rounded-pill w-100" onclick="appendToDisplay('+')">+</div></div>
+          
+          <div class="col-3"><div class="btn btn-info rounded-pill w-100" onclick="appendToDisplay('2')">2</div></div>
+          <div class="col-3"><div class="btn btn-info rounded-pill w-100" onclick="appendToDisplay('3')">3</div></div>
+          <div class="col-3"><div class="btn btn-info rounded-pill w-100" onclick="appendToDisplay('4')">4</div></div>
+          <div class="col-3"><div class="btn btn-danger rounded-pill w-100" onclick="appendToDisplay('-')">-</div></div>
+          
+          <div class="col-3"><div class="btn btn-info rounded-pill w-100" onclick="appendToDisplay('5')">5</div></div>
+          <div class="col-3"><div class="btn btn-info rounded-pill w-100" onclick="appendToDisplay('6')">6</div></div>
+          <div class="col-3"><div class="btn btn-info rounded-pill w-100" onclick="appendToDisplay('7')">7</div></div>
+          <div class="col-3"><div class="btn btn-danger rounded-pill w-100" onclick="appendToDisplay('*')">*</div></div>
+          
+          <div class="col-3"><div class="btn btn-info rounded-pill w-100" onclick="appendToDisplay('8')">8</div></div>
+          <div class="col-3"><div class="btn btn-info rounded-pill w-100" onclick="appendToDisplay('9')">9</div></div>
+          <div class="col-3"><div class="btn btn-secondary rounded-pill w-100" onclick="appendToDisplay('(')">(</div></div>
+          <div class="col-3"><div class="btn btn-danger rounded-pill w-100" onclick="appendToDisplay('/')">/</div></div>
+          
+          <div class="col-6"><button class="btn btn-success rounded-pill w-100" onclick="calculer()"><strong>Calculer</strong></button></div>
+          <div class="col-3"><button class="btn btn-success rounded-pill w-100" onclick="carre()"><strong>²</strong></button></div>
+          <div class="col-3"><div class="btn btn-secondary rounded-pill w-100" onclick="appendToDisplay(')')">)</div></div>
+        </div>
     </main>
     <script src="calc.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
