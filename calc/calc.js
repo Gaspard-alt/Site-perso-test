@@ -17,8 +17,10 @@ display.value=""
 }
 
 function carre(){
-        const display = document.getElementById('display');
-        const valeur = display.value;
-        const res_carre=valeur*valeur;
+    const display = document.getElementById('display');
+    const valeur = display.value;
+    console.log("valeur a carre:", valeur)
+    const valeur_calculee = eval(valeur);
+    const res_carre=valeur_calculee*valeur_calculee;
     display.value=res_carre;
 }
