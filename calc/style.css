@@ -1,6 +1,6 @@
 .touche {
     cursor: crosshair;
-    background-color: blue;
-    width: 10%;
-    height: 10%;
+    background-color: rgb(64, 0, 255);
+    width: 20%;
+    height: 20%;
 }
