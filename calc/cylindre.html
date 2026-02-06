@@ -180,24 +180,24 @@
             <div class="control-group">
                 <label for="radius">Rayon du cylindre (cm)</label>
                 <div class="slider-container">
-                    <input type="range" id="radius" min="1" max="30" value="10" step="0.1">
-                    <span class="slider-value" id="radiusValue">10.0</span>
+                    <input type="range" id="radius" min="1" max="20" value="5" step="0.1">
+                    <span class="slider-value" id="radiusValue">5.0</span>
                 </div>
             </div>
 
             <div class="control-group">
                 <label for="height">Hauteur totale du cylindre (cm)</label>
                 <div class="slider-container">
-                    <input type="range" id="height" min="5" max="120" value="60" step="0.1">
-                    <span class="slider-value" id="heightValue">60.0</span>
+                    <input type="range" id="height" min="5" max="50" value="20" step="0.1">
+                    <span class="slider-value" id="heightValue">20.0</span>
                 </div>
             </div>
 
             <div class="control-group">
                 <label for="liquidHeight">Hauteur du liquide (cm)</label>
                 <div class="slider-container">
-                    <input type="range" id="liquidHeight" min="0" max="60" value="30" step="0.1">
-                    <span class="slider-value" id="liquidHeightValue">30.0</span>
+                    <input type="range" id="liquidHeight" min="0" max="20" value="10" step="0.1">
+                    <span class="slider-value" id="liquidHeightValue">10.0</span>
                 </div>
             </div>
 
@@ -258,7 +258,7 @@
 
         // === Matériaux ===
         const cylinderMaterial = new THREE.MeshStandardMaterial({
-            color: 0xff0000,
+            color: 0x2c3e50,
             metalness: 0.3,
             roughness: 0.4
         });
@@ -343,15 +343,8 @@
             cylinderGroup.children[2].scale.z = radius / 5;
             cylinderGroup.children[2].position.y = -(totalHeight / 20) * 0.5 - 0.05;
 
-            // Correction pour l'index du liquide (maintenant à l'index 3)
-            if (cylinderGroup.children.length > 3) {
-                cylinderGroup.remove(cylinderGroup.children[3]);
-            }
-
             // Mise à jour du liquide
-            if (cylinderGroup.children.length > 3) {
-                cylinderGroup.remove(liquid);
-            }
+            cylinderGroup.removeChild(liquid);
             liquidGeometry.dispose();
 
             const liquidHeightScaled = Math.min(liquidHeight, totalHeight);
@@ -388,36 +381,6 @@
         heightInput.addEventListener('input', updateVisualization);
         liquidHeightInput.addEventListener('input', updateVisualization);
 
-        // === Contrôles de souris ===
-        let isDragging = false;
-        let previousMousePosition = { x: 0, y: 0 };
-        let rotation = { x: 0, y: 0 };
-
-        renderer.domElement.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            previousMousePosition = { x: e.clientX, y: e.clientY };
-        });
-
-        renderer.domElement.addEventListener('mousemove', (e) => {
-            if (isDragging) {
-                const deltaX = e.clientX - previousMousePosition.x;
-                const deltaY = e.clientY - previousMousePosition.y;
-
-                rotation.y += deltaX * 0.01;
-                rotation.x += deltaY * 0.01;
-
-                previousMousePosition = { x: e.clientX, y: e.clientY };
-            }
-        });
-
-        renderer.domElement.addEventListener('mouseup', () => {
-            isDragging = false;
-        });
-
-        renderer.domElement.addEventListener('mouseleave', () => {
-            isDragging = false;
-        });
-
         // Initialisation
         updateVisualization();
 
@@ -425,9 +388,8 @@
         function animate() {
             requestAnimationFrame(animate);
             
-            // Application de la rotation contrôlée par la souris
-            cylinderGroup.rotation.x = rotation.x;
-            cylinderGroup.rotation.y = rotation.y;
+            // Rotation douce du cylindre
+            cylinderGroup.rotation.y += 0.005;
             
             renderer.render(scene, camera);
         }
